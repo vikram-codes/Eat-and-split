@@ -12,8 +12,8 @@ export default function App() {
           <FriendList />
           <FormAddFriend />
           <Button>Add friend</Button>
-          <FormSplitBill />
         </div>
+        <FormSplitBill />
       </div>
     </>
   );
