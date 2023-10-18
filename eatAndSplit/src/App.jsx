@@ -1,11 +1,14 @@
 import "./App.css";
+import FriendList from "./components/FriendList";
 
-function App() {
+export default function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <div className="app">
+        <div className="sidebar">
+          <FriendList />
+        </div>
+      </div>
     </>
   );
 }
-
-export default App;
