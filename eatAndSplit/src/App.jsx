@@ -7,13 +7,20 @@ import { useState } from "react";
 
 export default function App() {
   const [addFriend, setAddFriend] = useState(false);
+
+  function handleAddFriend() {
+    setAddFriend((prev) => !prev);
+  }
+
   return (
     <>
       <div className="app">
         <div className="sidebar">
           <FriendList />
           {addFriend && <FormAddFriend />}
-          <Button>Add friend</Button>
+          <Button onClick={handleAddFriend}>
+            {addFriend ? "Close" : "Add Friend"}
+          </Button>
         </div>
         <FormSplitBill />
       </div>

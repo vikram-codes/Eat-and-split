@@ -3,6 +3,8 @@ import Button from "./Button";
 function FormSplitBill() {
   //   let friendData = initialFriends;
 
+  function handleSplitBill() {}
+
   return (
     <>
       <form className="form-split-bill">
@@ -19,7 +21,7 @@ function FormSplitBill() {
           <option>...</option>
         </select>
         <input type="text" />
-        <Button>Split Bill</Button>
+        <Button onClick={handleSplitBill}>Split Bill</Button>
       </form>
     </>
   );
