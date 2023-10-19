@@ -3,46 +3,49 @@ import Button from "./Button";
 import FormSplitBill from "./FormSplitBill";
 import FormAddFriend from "./FormAddFriend";
 
-export default function FriendList({ friends }) {
+export default function FriendList({ friends, onSelection, splitBill }) {
   return (
     <>
       <div>
         <ul>
           {friends.map((f) => (
             <>
-              <Friend friend={f} key={f.id} />
+              <Friend
+                friend={f}
+                key={f.id}
+                onSelection={onSelection}
+                splitBill={splitBill}
+              />
             </>
           ))}
         </ul>
-        {/* <FormAddFriend />
-        <Button>Add Friend</Button> */}
       </div>
-      {/* <FormSplitBill data={initialFriends} /> */}
     </>
   );
 }
 
-function Friend(props) {
+function Friend({ friend, onSelection, splitBill }) {
+  const isSelected = splitBill?.id === friend.id;
   return (
     <li>
-      <img src={props.friend.image} alt={props.friend.name} />
-      <h3>{props.friend.name}</h3>
+      <img src={friend.image} alt={friend.name} />
+      <h3>{friend.name}</h3>
       <p
         className={
-          props.friend.balance >= 0
-            ? `${props.friend.balance == 0 ? "" : "green"}`
-            : "red"
+          friend.balance >= 0 ? `${friend.balance == 0 ? "" : "green"}` : "red"
         }
       >
-        {props.friend.balance >= 0
+        {friend.balance >= 0
           ? `${
-              props.friend.balance == 0
-                ? `You and ${props.friend.name} are even`
-                : `${props.friend.name} owes you $${props.friend.balance}`
+              friend.balance == 0
+                ? `You and ${friend.name} are even`
+                : `${friend.name} owes you $${friend.balance}`
             }`
-          : `You owe ${props.friend.name} $${Math.abs(props.friend.balance)}`}
+          : `You owe ${friend.name} $${Math.abs(friend.balance)}`}
       </p>
-      <Button>Select</Button>
+      <Button onClick={() => onSelection(friend)}>
+        {isSelected ? "Close" : "Select"}
+      </Button>
     </li>
   );
 }
